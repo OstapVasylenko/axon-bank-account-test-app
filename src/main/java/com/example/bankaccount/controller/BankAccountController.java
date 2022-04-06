@@ -1,15 +1,15 @@
-package com.example.bankaccount.command.controller;
+package com.example.bankaccount.controller;
 
 import com.example.bankaccount.command.dto.CreateAccountRequest;
 import com.example.bankaccount.command.dto.DepositRequest;
 import com.example.bankaccount.command.dto.WithdrawRequest;
 import com.example.bankaccount.command.service.AccountCommandService;
+import com.example.bankaccount.query.entity.Account;
+import com.example.bankaccount.query.query.FindAccountByIdQuery;
+import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -18,9 +18,11 @@ import java.util.concurrent.CompletableFuture;
 public class BankAccountController {
 
     private final AccountCommandService accountCommandService;
+    private final QueryGateway queryGateway;
 
-    public BankAccountController(AccountCommandService accountCommandService) {
+    public BankAccountController(AccountCommandService accountCommandService, QueryGateway queryGateway) {
         this.accountCommandService = accountCommandService;
+        this.queryGateway = queryGateway;
     }
 
     @PostMapping("/create")
@@ -62,6 +64,16 @@ public class BankAccountController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Account> getAccount(@PathVariable String id){
 
+        Account account = queryGateway.query(new FindAccountByIdQuery(id), Account.class).join();
+
+        if(account == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(account, HttpStatus.OK);
+    }
 
 }

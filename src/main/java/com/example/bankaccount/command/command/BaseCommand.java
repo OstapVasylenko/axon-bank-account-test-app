@@ -1,4 +1,4 @@
-package com.example.bankaccount.api.command;
+package com.example.bankaccount.command.command;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 

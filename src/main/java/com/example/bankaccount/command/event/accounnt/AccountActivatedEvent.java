@@ -1,6 +1,6 @@
-package com.example.bankaccount.api.event.accounnt;
+package com.example.bankaccount.command.event.accounnt;
 
-import com.example.bankaccount.api.event.BaseEvent;
+import com.example.bankaccount.command.event.BaseEvent;
 import lombok.Getter;
 
 public class AccountActivatedEvent extends BaseEvent<String> {

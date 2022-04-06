@@ -1,4 +1,7 @@
 package com.example.bankaccount.query.repository;
 
-public class AccountRepositoy {
+import com.example.bankaccount.query.entity.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AccountRepository extends JpaRepository<Account, String> {
 }

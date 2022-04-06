@@ -1,6 +1,6 @@
-package com.example.bankaccount.api.command.account;
+package com.example.bankaccount.command.command.account;
 
-import com.example.bankaccount.api.command.BaseCommand;
+import com.example.bankaccount.command.command.BaseCommand;
 import lombok.Getter;
 
 public class CreateAccountCommand extends BaseCommand<String> {

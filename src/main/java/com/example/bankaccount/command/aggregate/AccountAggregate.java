@@ -1,12 +1,12 @@
-package com.example.bankaccount.api.aggregate;
+package com.example.bankaccount.command.aggregate;
 
-import com.example.bankaccount.api.command.account.CreateAccountCommand;
-import com.example.bankaccount.api.command.account.DepositMoneyCommand;
-import com.example.bankaccount.api.command.account.WithdrawMonewCommand;
-import com.example.bankaccount.api.event.accounnt.AccountActivatedEvent;
-import com.example.bankaccount.api.event.accounnt.AccountCreatedEvent;
-import com.example.bankaccount.api.event.accounnt.AccountCreditedEvent;
-import com.example.bankaccount.api.event.accounnt.AccountDebitedEvent;
+import com.example.bankaccount.command.command.account.CreateAccountCommand;
+import com.example.bankaccount.command.command.account.DepositMoneyCommand;
+import com.example.bankaccount.command.command.account.WithdrawMonewCommand;
+import com.example.bankaccount.command.event.accounnt.AccountActivatedEvent;
+import com.example.bankaccount.command.event.accounnt.AccountCreatedEvent;
+import com.example.bankaccount.command.event.accounnt.AccountCreditedEvent;
+import com.example.bankaccount.command.event.accounnt.AccountDebitedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventhandling.EventHandler;
@@ -69,7 +69,7 @@ public class AccountAggregate {
 
     }
 
-    @EventHandler
+    @EventSourcingHandler
     public void handle(AccountCreditedEvent accountCreditedEvent) {
         log.info("AccountCreditedEvent invoked");
 

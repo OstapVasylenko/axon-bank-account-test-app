@@ -1,11 +1,11 @@
-package com.example.bankaccount.api.service;
+package com.example.bankaccount.command.service;
 
-import com.example.bankaccount.api.command.account.CreateAccountCommand;
-import com.example.bankaccount.api.command.account.DepositMoneyCommand;
-import com.example.bankaccount.api.command.account.WithdrawMonewCommand;
-import com.example.bankaccount.api.dto.CreateAccountRequest;
-import com.example.bankaccount.api.dto.DepositRequest;
-import com.example.bankaccount.api.dto.WithdrawRequest;
+import com.example.bankaccount.command.command.account.CreateAccountCommand;
+import com.example.bankaccount.command.command.account.DepositMoneyCommand;
+import com.example.bankaccount.command.command.account.WithdrawMonewCommand;
+import com.example.bankaccount.command.dto.CreateAccountRequest;
+import com.example.bankaccount.command.dto.DepositRequest;
+import com.example.bankaccount.command.dto.WithdrawRequest;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
